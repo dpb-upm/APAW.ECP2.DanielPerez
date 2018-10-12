@@ -1,9 +1,9 @@
 package api.daos.memory;
 
-import api.daos.ServidorDAO;
+import api.daos.ServidorDao;
 import api.entities.Servidor;
 
-public class ServidorDaoMemory extends GenericDaoMemory<Servidor> implements ServidorDAO {
+public class ServidorDaoMemory extends GenericDaoMemory<Servidor> implements ServidorDao {
 
     @Override
     public String getId(Servidor entity) {

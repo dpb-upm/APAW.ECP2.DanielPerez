@@ -1,9 +1,9 @@
 package api.daos.memory;
 
-import api.daos.ArchivoDAO;
+import api.daos.ArchivoDao;
 import api.entities.Archivo;
 
-public class ArchivoDaoMemory extends GenericDaoMemory<Archivo> implements ArchivoDAO {
+public class ArchivoDaoMemory extends GenericDaoMemory<Archivo> implements ArchivoDao {
 
     @Override
     public String getId(Archivo entity) {

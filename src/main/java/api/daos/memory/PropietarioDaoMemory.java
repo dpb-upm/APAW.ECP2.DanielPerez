@@ -1,9 +1,9 @@
 package api.daos.memory;
 
-import api.daos.PropietarioDAO;
+import api.daos.PropietarioDao;
 import api.entities.Propietario;
 
-public class PropietarioDaoMemory extends GenericDaoMemory<Propietario> implements PropietarioDAO {
+public class PropietarioDaoMemory extends GenericDaoMemory<Propietario> implements PropietarioDao {
     
     @Override
     public String getId(Propietario entity) {

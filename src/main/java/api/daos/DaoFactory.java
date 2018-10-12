@@ -13,11 +13,11 @@ public abstract class DaoFactory {
         DaoFactory.factory = factory;
     }
 
-    public abstract ArchivoDAO getArchivoDAO();
+    public abstract ArchivoDao getArchivoDAO();
 
-    public abstract ServidorDAO getServidorDAO();
+    public abstract ServidorDao getServidorDAO();
 
-    public abstract PropietarioDAO getPropietarioDAO();
+    public abstract PropietarioDao getPropietarioDAO();
 
-    public abstract SalaDAO getSalaDAO();
+    public abstract SalaDao getSalaDAO();
 }
