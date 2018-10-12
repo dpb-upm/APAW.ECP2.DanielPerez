@@ -19,5 +19,5 @@ public abstract class DaoFactory {
 
     public abstract PropietarioDAO getPropietarioDAO();
 
-    public abstract SaaDAO getSalaDAO();
+    public abstract SalaDAO getSalaDAO();
 }
