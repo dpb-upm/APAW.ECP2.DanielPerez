@@ -1,0 +1,19 @@
+language: java
+jdk:
+- oraclejdk8
+branches:
+  only:
+  - master
+  - develop
+notifications:
+  email:
+    recipients:
+    - daniel.perez.bernal@alumnos.upm.es
+services:
+- mysql
+before_install:
+- mysql -e 'CREATE DATABASE IF NOT EXISTS forge;'
+script:
+- mvn verify
+- mvn org.jacoco:jacoco-maven-plugin:prepare-agent verify
+- mvn sonar:sonar -Dsonar.organization=dpb-upm-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR
