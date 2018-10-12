@@ -2,10 +2,6 @@ package api.entities;
 
 public class Archivo {
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     private String id;
     private String descripcion;
     private float tamanio;
@@ -18,6 +14,10 @@ public class Archivo {
         this.id = id;
         this.tamanio = tamanio;
         this.descripcion = descripcion;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getId() {
