@@ -1,4 +1,4 @@
-package api;
+package api.entities;
 
 public class ArchivoLeaf implements ArchivoComponent {
 

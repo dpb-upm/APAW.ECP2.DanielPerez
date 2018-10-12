@@ -1,4 +1,4 @@
-package api;
+package api.entities;
 
 import java.util.HashSet;
 import java.util.Set;
