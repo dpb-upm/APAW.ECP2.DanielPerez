@@ -32,6 +32,10 @@ public class Servidor implements Observer<Archivo> {
         this.archivos = new HashMap<>();
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getId() {
         return id;
     }
