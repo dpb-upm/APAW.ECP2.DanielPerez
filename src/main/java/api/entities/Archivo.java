@@ -56,7 +56,7 @@ public class Archivo {
             return this;
         }
 
-        public Builder tamanio(int tamanio){
+        public Builder tamanio(float tamanio){
             archivo.setTamanio(tamanio);
             return this;
         }
