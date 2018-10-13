@@ -23,9 +23,13 @@ public abstract class GenericDaoMemory<T> implements GenericDao<T, String> {
             id = String.valueOf(this.id);
             this.setIdT(entity, id);
         }
-        this.map.put(String.valueOf(this.id), entity);
-        this.id++;
-        LogManager.getLogger(this.getClass()).debug("   save: " + entity);
+        if (!this.map.containsKey(id)) {
+            this.map.put(String.valueOf(this.id), entity);
+            this.id++;
+            LogManager.getLogger(this.getClass()).debug("   save: " + entity);
+        } else {
+            LogManager.getLogger(this.getClass()).error("La entidad ya existe en el índice");;
+        }
     }
 
     @Override
