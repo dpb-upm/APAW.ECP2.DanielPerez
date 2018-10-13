@@ -30,6 +30,10 @@ public class ArchivoDto {
         this.tamanio = tamanio;
     }
 
+    public boolean iguales(Archivo archivo){
+        return this.id.equals(archivo.getId()) && this.tamanio == archivo.getTamanio() && this.descripcion.equals(archivo.getDescripcion());
+    }
+
     @Override
     public String toString(){
         return "ArchivoDto{" +

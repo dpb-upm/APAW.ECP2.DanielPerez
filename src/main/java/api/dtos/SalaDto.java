@@ -30,6 +30,10 @@ public class SalaDto {
         this.capacidad = capacidad;
     }
 
+    public boolean iguales(Sala sala) {
+        return this.id.equals(sala.getId()) && this.nombre.equals(sala.getNombre()) && this.capacidad == sala.getCapacidad();
+    }
+
     @Override
     public String toString(){
         return "SalaDto{" +

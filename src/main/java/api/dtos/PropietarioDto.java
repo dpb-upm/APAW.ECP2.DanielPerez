@@ -42,6 +42,10 @@ public class PropietarioDto {
         this.nacimiento = nacimiento;
     }
 
+    public boolean iguales(Propietario propietario){
+        return this.id.equals(propietario.getId()) && this.getNombre().equals(propietario.getNombre()) && this.getEdad() == propietario.getEdad() && this.getNacimiento().isEqual(propietario.getNacimiento());
+    }
+
     @Override
     public String toString(){
         return "PropietarioDto{" +

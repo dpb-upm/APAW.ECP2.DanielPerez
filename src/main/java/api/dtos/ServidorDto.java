@@ -52,6 +52,10 @@ public class ServidorDto {
         this.archivos = archivos;
     }
 
+    public boolean iguales(Servidor servidor) {
+        return this.id.equals(servidor.getId()) && this.tipo.equals(servidor.getTipo()) && (this.lleno == servidor.isLleno()) && (this.archivos.size() == servidor.getArchivos().size());
+    }
+
     @Override
     public String toString(){
         return "SalaDto{" +
