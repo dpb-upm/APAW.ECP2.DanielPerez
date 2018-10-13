@@ -41,6 +41,10 @@ public class Propietario {
         this.nacimiento = nacimiento;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getId() {
         return id;
     }

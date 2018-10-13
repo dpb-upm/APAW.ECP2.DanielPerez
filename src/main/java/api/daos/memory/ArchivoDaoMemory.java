@@ -1,0 +1,17 @@
+package api.daos.memory;
+
+import api.daos.ArchivoDao;
+import api.entities.Archivo;
+
+public class ArchivoDaoMemory extends GenericDaoMemory<Archivo> implements ArchivoDao {
+
+    @Override
+    public String getIdT(Archivo archivo) {
+        return archivo.getId();
+    }
+
+    @Override
+    public void setIdT(Archivo archivo, String id) {
+        archivo.setId(id);
+    }
+}

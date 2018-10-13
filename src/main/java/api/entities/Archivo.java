@@ -6,6 +6,8 @@ public class Archivo {
     private String descripcion;
     private float tamanio;
 
+    public Archivo(){};
+
     public Archivo(String id){
         this.id = id;
     }
@@ -14,6 +16,10 @@ public class Archivo {
         this.id = id;
         this.tamanio = tamanio;
         this.descripcion = descripcion;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getId() {
@@ -36,12 +42,12 @@ public class Archivo {
         this.tamanio = tamanio;
     }
 
-    static class Builder {
+    public static class Builder {
 
-        private Archivo archivo;
+        private Archivo archivo = new Archivo();
 
         public Builder id(String id) {
-            archivo = new Archivo(id);
+            archivo.setId(id);
             return this;
         }
 
