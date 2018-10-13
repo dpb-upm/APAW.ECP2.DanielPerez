@@ -1,7 +1,10 @@
 package api;
 
+import api.controllers.ArchivoApiController;
+import api.controllers.ServidorApiController;
 import api.daos.DaoFactory;
 import api.daos.memory.DaoFactoryMemory;
+import api.dtos.ServidorDto;
 import api.exceptions.ArgumentNotValidException;
 import api.exceptions.NotFoundException;
 import api.exceptions.RequestInvalidException;
@@ -11,6 +14,8 @@ import http.HttpStatus;
 import org.apache.logging.log4j.LogManager;
 
 public class Dispatcher {
+
+    private final ServidorApiController servidorApiController = new ServidorApiController();
 
     static {
         DaoFactory.setFactory(new DaoFactoryMemory());
@@ -22,6 +27,7 @@ public class Dispatcher {
         try {
             switch (request.getMethod()) {
                 case POST:
+                    this.doPost(request, response);
                     break;
                 case GET:
                     break;
@@ -44,6 +50,14 @@ public class Dispatcher {
             exception.printStackTrace();
             response.setBody(String.format(ERROR_MESSAGE, exception));
             response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    private void doPost(HttpRequest request, HttpResponse response) {
+        if(request.isEqualsPath(ServidorApiController.ADD_SERVIDOR)) {
+            response.setBody(servidorApiController.create((ServidorDto) request.getBody()));
+        } else {
+            throw new RequestInvalidException("method error: " + request.getMethod() + ' ' + request.getPath());
         }
     }
 }

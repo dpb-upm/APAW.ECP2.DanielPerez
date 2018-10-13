@@ -4,6 +4,7 @@ import api.entities.Archivo;
 import api.entities.Propietario;
 import api.entities.TipoServidor;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class ServidorDto {
@@ -13,10 +14,10 @@ public class ServidorDto {
     private Propietario propietario;
     private Map<String, Archivo> archivos;
 
-    public ServidorDto(TipoServidor tipo, boolean lleno) {
+    public ServidorDto(TipoServidor tipo) {
         this.setTipo(tipo);
-        this.setLleno(lleno);
-        this.setPropietario(null);
+        this.setLleno(false);
+        this.setPropietario(new Propietario());
         this.setArchivos(new HashMap<>());
     }
 
