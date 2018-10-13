@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DtosTest {
@@ -19,21 +20,22 @@ public class DtosTest {
 
     @Test
     void testDtos() {
-        Archivo archivo = new Archivo.Builder().id("1").tamanio(100).descripcion("archivo 1").build();
-        ArchivoDto archivoDto = new ArchivoDto(archivo);
-        assertTrue(archivoDto.iguales(archivo));
+        ArchivoDto archivoDto = new ArchivoDto("descripcion archivo", 100);
+        assertTrue(archivoDto.getDescripcion().equals("descripcion archivo"));
+        assertTrue(archivoDto.getTamanio() == 100);
 
-        Propietario propietario = new Propietario("1", "Daniel", 30, DateUtil.getFormatedDate("1988-05-10 00:00"));
-        PropietarioDto propietarioDto = new PropietarioDto(propietario);
-        assertTrue(propietarioDto.iguales(propietario));
+        PropietarioDto propietarioDto = new PropietarioDto("Daniel", 30, DateUtil.getFormatedDate("1988-05-10 00:00"));
+        assertTrue(propietarioDto.getNombre().equals("Daniel"));
+        assertTrue(propietarioDto.getEdad() == 30);
+        assertTrue(propietarioDto.getNacimiento().isEqual(DateUtil.getFormatedDate("1988-05-10 00:00")));
 
-        Sala sala = new Sala("1", "Sala prueba", 11);
-        SalaDto salaDto = new SalaDto(sala);
-        assertTrue(salaDto.iguales(sala));
+        SalaDto salaDto = new SalaDto("Sala prueba", 1);
+        assertTrue(salaDto.getNombre().equals("Sala prueba"));
+        assertTrue(salaDto.getCapacidad() == 1);
 
         LocalDateTime localDateTime = LocalDateTime.of(1988, 05, 10, 0, 0);
-        Servidor servidor = new Servidor("1", TipoServidor.WEB, propietario);
-        ServidorDto servidorDto = new ServidorDto(servidor);
-        assertTrue(servidorDto.iguales(servidor));
+        ServidorDto servidorDto = new ServidorDto(TipoServidor.WEB, false);
+        assertTrue(servidorDto.getTipo().equals(TipoServidor.WEB));
+        assertFalse(servidorDto.isLleno());
     }
 }

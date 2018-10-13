@@ -1,17 +1,13 @@
 package api.dtos;
 
-import api.entities.Archivo;
-
 public class ArchivoDto {
 
-    private String id;
     private String descripcion;
     private float tamanio;
 
-    public ArchivoDto(Archivo archivo) {
-        this.id = archivo.getId();
-        this.tamanio = archivo.getTamanio();
-        this.descripcion = archivo.getDescripcion();
+    public ArchivoDto(String descripcion, float tamanio) {
+        this.setTamanio(tamanio);
+        this.setDescripcion(descripcion);
     }
 
     public String getDescripcion() {
@@ -30,16 +26,11 @@ public class ArchivoDto {
         this.tamanio = tamanio;
     }
 
-    public boolean iguales(Archivo archivo){
-        return this.id.equals(archivo.getId()) && this.tamanio == archivo.getTamanio() && this.descripcion.equals(archivo.getDescripcion());
-    }
-
     @Override
     public String toString(){
         return "ArchivoDto{" +
-                "id='" + id + '\'' +
                 ", tamaño='" + tamanio + '\'' +
-                "id='" + descripcion + '\'' +
+                "descripcion='" + descripcion + '\'' +
                 '}';
     }
 }
