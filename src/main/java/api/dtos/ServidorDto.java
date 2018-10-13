@@ -5,7 +5,6 @@ import api.entities.Propietario;
 import api.entities.Servidor;
 import api.entities.TipoServidor;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class ServidorDto {

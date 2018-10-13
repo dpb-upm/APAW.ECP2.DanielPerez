@@ -6,7 +6,7 @@ public class Archivo {
     private String descripcion;
     private float tamanio;
 
-    public Archivo(){};
+    public Archivo(){}
 
     public Archivo(String id){
         this.id = id;

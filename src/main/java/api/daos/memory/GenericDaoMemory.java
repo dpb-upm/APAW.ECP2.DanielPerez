@@ -1,9 +1,9 @@
 package api.daos.memory;
 
-import java.util.*;
-
 import api.daos.GenericDao;
 import org.apache.logging.log4j.LogManager;
+
+import java.util.*;
 
 public abstract class GenericDaoMemory<T> implements GenericDao<T, String> {
 
@@ -18,17 +18,17 @@ public abstract class GenericDaoMemory<T> implements GenericDao<T, String> {
 
     @Override
     public void save(T entity) {
-        String id = this.getIdT(entity);
-        if (id == null) {
-            id = String.valueOf(this.id);
-            this.setIdT(entity, id);
+        String idEntity = this.getIdT(entity);
+        if (idEntity == null) {
+            idEntity = String.valueOf(this.id);
+            this.setIdT(entity, idEntity);
         }
         if (!this.map.containsKey(id)) {
             this.map.put(String.valueOf(this.id), entity);
             this.id++;
             LogManager.getLogger(this.getClass()).debug("   save: " + entity);
         } else {
-            LogManager.getLogger(this.getClass()).error("La entidad ya existe en el índice");;
+            LogManager.getLogger(this.getClass()).error("La entidad ya existe en el índice");
         }
     }
 
