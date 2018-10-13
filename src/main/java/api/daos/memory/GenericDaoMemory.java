@@ -18,13 +18,14 @@ public abstract class GenericDaoMemory<T> implements GenericDao<T, String> {
 
     @Override
     public void save(T entity) {
-        String id = this.getId(entity);
-        if (id == null) {
-            id = String.valueOf(this.id++);
-            this.setId(entity, id);
-        }
-        this.map.put(id, entity);
+        this.map.put(String.valueOf(this.id), entity);
+        this.id++;
         LogManager.getLogger(this.getClass()).debug("   save: " + entity);
+    }
+
+    @Override
+    public T getEntity(String id){
+        return map.get(id);
     }
 
     @Override
@@ -36,6 +37,7 @@ public abstract class GenericDaoMemory<T> implements GenericDao<T, String> {
 
     @Override
     public void deleteById(String id) {
+        map.remove(id);
         LogManager.getLogger(this.getClass()).debug("   deleteById(" + id + "): " + map.remove(id));
     }
 
@@ -46,7 +48,7 @@ public abstract class GenericDaoMemory<T> implements GenericDao<T, String> {
         return list;
     }
 
-    public abstract String getId(T entity);
+    public abstract String getIdT(T entity);
 
-    public abstract void setId(T entity, String id);
+    public abstract void setIdT(T entity, String id);
 }
