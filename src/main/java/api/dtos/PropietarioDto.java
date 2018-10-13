@@ -1,17 +1,21 @@
 package api.dtos;
 
+import api.entities.Propietario;
+
 import java.time.LocalDateTime;
 
 public class PropietarioDto {
 
+    private String id;
     private String nombre;
     private int edad;
     private LocalDateTime nacimiento;
 
-    public PropietarioDto(String nombre, int edad, LocalDateTime nacimiento) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.nacimiento = nacimiento;
+    public PropietarioDto(Propietario propietario) {
+        this.id = propietario.getId();
+        this.nombre = propietario.getNombre();
+        this.edad = propietario.getEdad();
+        this.nacimiento = propietario.getNacimiento();
     }
 
     public String getNombre() {
@@ -36,5 +40,14 @@ public class PropietarioDto {
 
     public void setNacimiento(LocalDateTime nacimiento) {
         this.nacimiento = nacimiento;
+    }
+
+    @Override
+    public String toString(){
+        return "PropietarioDto{" +
+            "id='" + id + '\'' +
+            ", edad='" + edad + '\'' +
+            "nacimiento='" + nacimiento.getDayOfMonth()+"/"+nacimiento.getMonth()+"/"+nacimiento.getYear() + '\'' +
+            '}';
     }
 }

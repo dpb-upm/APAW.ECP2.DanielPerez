@@ -30,6 +30,7 @@ public class ArchivoDto {
         this.tamanio = tamanio;
     }
 
+    @Override
     public String toString(){
         return "ArchivoDto{" +
                 "id='" + id + '\'' +
