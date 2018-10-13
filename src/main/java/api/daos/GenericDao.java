@@ -14,4 +14,6 @@ public interface GenericDao<T, String> {
     void deleteById(String id);
 
     List<T> findAll();
+
+    int total();
 }
