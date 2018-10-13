@@ -15,7 +15,7 @@ public class DaoFactoryTest {
     }
 
     @Test
-    void testArchivoDao() {
+    void testFactoryDao() {
         assertTrue(DaoFactory.getFactory().getArchivoDAO().total() == 0);
         DaoFactory.getFactory().getArchivoDAO().save(new Archivo.Builder().descripcion("archivo 1").build());
         assertTrue(DaoFactory.getFactory().getArchivoDAO().total() == 1);
