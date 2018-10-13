@@ -46,6 +46,7 @@ public class PropietarioDto {
     public String toString(){
         return "PropietarioDto{" +
             "id='" + id + '\'' +
+            ", nombre='" + nombre + '\'' +
             ", edad='" + edad + '\'' +
             "nacimiento='" + nacimiento.getDayOfMonth()+"/"+nacimiento.getMonth()+"/"+nacimiento.getYear() + '\'' +
             '}';
