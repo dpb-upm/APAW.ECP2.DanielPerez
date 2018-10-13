@@ -9,9 +9,9 @@ public class PropietarioDto {
     private LocalDateTime nacimiento;
 
     public PropietarioDto(String nombre, int edad, LocalDateTime fecha) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.nacimiento = fecha;
+        this.setNombre(nombre);
+        this.setEdad(edad);
+        this.setNacimiento(fecha);
     }
 
     public String getNombre() {
