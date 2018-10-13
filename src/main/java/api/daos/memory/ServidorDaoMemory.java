@@ -6,12 +6,12 @@ import api.entities.Servidor;
 public class ServidorDaoMemory extends GenericDaoMemory<Servidor> implements ServidorDao {
 
     @Override
-    public String getId(Servidor entity) {
-        return entity.getId();
+    public String getIdT(Servidor servidor) {
+        return servidor.getId();
     }
 
     @Override
-    public void setId(Servidor entity, String id) {
-        entity.setId(id);
+    public void setIdT(Servidor servidor, String id) {
+        servidor.setId(id);
     }
 }

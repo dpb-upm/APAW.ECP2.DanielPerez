@@ -5,12 +5,12 @@ import api.entities.Sala;
 
 public class SalaDaoMemory extends GenericDaoMemory<Sala> implements SalaDao {
     @Override
-    public String getId(Sala entity) {
-        return entity.getId();
+    public String getIdT(Sala sala) {
+        return sala.getId();
     }
 
     @Override
-    public void setId(Sala entity, String id) {
-        entity.setId(id);
+    public void setIdT(Sala sala, String id) {
+        sala.setId(id);
     }
 }

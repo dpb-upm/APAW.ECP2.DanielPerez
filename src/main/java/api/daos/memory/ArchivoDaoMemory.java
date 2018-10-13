@@ -6,12 +6,12 @@ import api.entities.Archivo;
 public class ArchivoDaoMemory extends GenericDaoMemory<Archivo> implements ArchivoDao {
 
     @Override
-    public String getId(Archivo entity) {
-        return entity.getId();
+    public String getIdT(Archivo archivo) {
+        return archivo.getId();
     }
 
     @Override
-    public void setId(Archivo entity, String id) {
-        entity.setId(id);
+    public void setIdT(Archivo archivo, String id) {
+        archivo.setId(id);
     }
 }
