@@ -2,25 +2,22 @@ package api.dtos;
 
 import api.entities.Archivo;
 import api.entities.Propietario;
-import api.entities.Servidor;
 import api.entities.TipoServidor;
 
 import java.util.Map;
 
 public class ServidorDto {
 
-    private String id;
     private TipoServidor tipo;
     private boolean lleno;
     private Propietario propietario;
     private Map<String, Archivo> archivos;
 
-    public ServidorDto(Servidor servidor) {
-        this.id = servidor.getId();
-        this.tipo = servidor.getTipo();
-        this.lleno = servidor.isLleno();
-        this.propietario = servidor.getPropietario();
-        this.archivos = servidor.getArchivos();
+    public ServidorDto(TipoServidor tipo, boolean lleno) {
+        this.setTipo(tipo);
+        this.setLleno(lleno);
+        this.setPropietario(null);
+        this.setArchivos(new HashMap<>());
     }
 
     public TipoServidor getTipo() {
@@ -33,6 +30,10 @@ public class ServidorDto {
 
     public boolean isLleno() {
         return lleno;
+    }
+
+    public void setLleno(boolean lleno) {
+        this.lleno = lleno;
     }
 
     public Propietario getPropietario() {
@@ -51,14 +52,9 @@ public class ServidorDto {
         this.archivos = archivos;
     }
 
-    public boolean iguales(Servidor servidor) {
-        return this.id.equals(servidor.getId()) && this.tipo.equals(servidor.getTipo()) && (this.lleno == servidor.isLleno()) && (this.archivos.size() == servidor.getArchivos().size());
-    }
-
     @Override
     public String toString(){
         return "SalaDto{" +
-            "id='" + id + '\'' +
             ", tipo='" + tipo + '\'' +
             "lleno='" + lleno + '\'' +
             "propietario='" + propietario.getNombre() + '\'' +

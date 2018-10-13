@@ -1,21 +1,17 @@
 package api.dtos;
 
-import api.entities.Propietario;
-
 import java.time.LocalDateTime;
 
 public class PropietarioDto {
 
-    private String id;
     private String nombre;
     private int edad;
     private LocalDateTime nacimiento;
 
-    public PropietarioDto(Propietario propietario) {
-        this.id = propietario.getId();
-        this.nombre = propietario.getNombre();
-        this.edad = propietario.getEdad();
-        this.nacimiento = propietario.getNacimiento();
+    public PropietarioDto(String nombre, int edad, LocalDateTime fecha) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.nacimiento = fecha;
     }
 
     public String getNombre() {
@@ -42,14 +38,9 @@ public class PropietarioDto {
         this.nacimiento = nacimiento;
     }
 
-    public boolean iguales(Propietario propietario){
-        return this.id.equals(propietario.getId()) && this.getNombre().equals(propietario.getNombre()) && this.getEdad() == propietario.getEdad() && this.getNacimiento().isEqual(propietario.getNacimiento());
-    }
-
     @Override
     public String toString(){
         return "PropietarioDto{" +
-            "id='" + id + '\'' +
             ", nombre='" + nombre + '\'' +
             ", edad='" + edad + '\'' +
             "nacimiento='" + nacimiento.getDayOfMonth()+"/"+nacimiento.getMonth()+"/"+nacimiento.getYear() + '\'' +
