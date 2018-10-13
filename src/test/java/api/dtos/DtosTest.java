@@ -34,7 +34,7 @@ public class DtosTest {
         assertTrue(salaDto.getCapacidad() == 1);
 
         LocalDateTime localDateTime = LocalDateTime.of(1988, 05, 10, 0, 0);
-        ServidorDto servidorDto = new ServidorDto(TipoServidor.WEB, false);
+        ServidorDto servidorDto = new ServidorDto(TipoServidor.WEB);
         assertTrue(servidorDto.getTipo().equals(TipoServidor.WEB));
         assertFalse(servidorDto.isLleno());
     }
