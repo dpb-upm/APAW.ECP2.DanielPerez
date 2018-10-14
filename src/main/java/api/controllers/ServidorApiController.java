@@ -2,6 +2,7 @@ package api.controllers;
 
 import api.businesscontroller.ServidorBusinessController;
 import api.dtos.ServidorDto;
+import api.entities.TipoServidor;
 import api.exceptions.ArgumentNotValidException;
 
 public class ServidorApiController {
@@ -13,6 +14,12 @@ public class ServidorApiController {
     public String create(ServidorDto servidorDto) {
         validate(servidorDto.getTipo(), "servidorDto tipo");
         return this.servidorBusinessController.create(servidorDto);
+    }
+
+    public void updateTipoServidor(String id, TipoServidor tipo){
+        validate(id, "id ServidorApi");
+        validate(tipo, "tipo ServidorApi");
+        this.servidorBusinessController.updateTipoServidor(id, tipo);
     }
 
     private void validate(Object property, String message) {
