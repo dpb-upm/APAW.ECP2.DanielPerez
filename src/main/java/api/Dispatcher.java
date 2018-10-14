@@ -49,7 +49,7 @@ public class Dispatcher {
             response.setBody(String.format(ERROR_MESSAGE, exception.getMessage()));
             response.setStatus(HttpStatus.NOT_FOUND);
         } catch (Exception exception) {  // Unexpected
-            exception.printStackTrace();
+            LogManager.getLogger(Dispatcher.class).debug(exception.getMessage());
             response.setBody(String.format(ERROR_MESSAGE, exception));
             response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
         }
