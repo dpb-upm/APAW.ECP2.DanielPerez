@@ -75,7 +75,9 @@ public class Dispatcher {
     }
 
     private void doGet(HttpRequest request, HttpResponse response) {
-        if (request.isEqualsPath(PropietarioApiController.GET_PROPIETARIO_SERVIDOR)) {
+        if (request.isEqualsPath(ArchivoApiController.ARCHIVO)){
+            response.setBody(this.archivoApiController.readAll());
+        } else if (request.isEqualsPath(PropietarioApiController.GET_PROPIETARIO_SERVIDOR)) {
             response.setBody(this.propietarioApiController.read((String) request.getBody()));
         } else {
             throw new RequestInvalidException(METHODERROR + request.getMethod() + ' ' + request.getPath());

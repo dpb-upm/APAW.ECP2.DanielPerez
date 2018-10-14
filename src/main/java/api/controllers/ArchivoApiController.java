@@ -2,7 +2,10 @@ package api.controllers;
 
 import api.businesscontroller.ArchivoBusinessController;
 import api.dtos.ArchivoDto;
+import api.entities.Archivo;
 import api.exceptions.ArgumentNotValidException;
+
+import java.util.List;
 
 public class ArchivoApiController {
 
@@ -14,6 +17,10 @@ public class ArchivoApiController {
         validate(archivoDto.getTamanio(), "archivoDto tamaño");
         validate(archivoDto.getDescripcion(), "archivoDto descripcion");
         return this.archivoBusinessController.create(archivoDto);
+    }
+
+    public List<Archivo> readAll() {
+        return this.archivoBusinessController.readAll();
     }
 
     private void validate(Object property, String message) {
