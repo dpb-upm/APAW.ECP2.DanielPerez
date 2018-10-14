@@ -32,6 +32,7 @@ public class Dispatcher {
                     this.doPost(request, response);
                     break;
                 case GET:
+                    this.doGet(request, response);
                     break;
                 case PUT:
                     break;
@@ -52,6 +53,14 @@ public class Dispatcher {
             LogManager.getLogger(Dispatcher.class).debug(exception.getMessage());
             response.setBody(String.format(errorMessage, exception));
             response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    private void doGet(HttpRequest request, HttpResponse response) {
+        if (request.isEqualsPath(PropietarioApiController.GET_PROPIETARIO_SERVIDOR)) {
+            response.setBody(this.propietarioApiController.read((String) request.getBody()));
+        } else {
+            throw new RequestInvalidException("method error: " + request.getMethod() + ' ' + request.getPath());
         }
     }
 
