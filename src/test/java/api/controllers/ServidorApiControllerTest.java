@@ -2,6 +2,7 @@ package api.controllers;
 
 import api.dtos.ServidorDto;
 import api.entities.TipoServidor;
+import api.exceptions.ArgumentNotValidException;
 import http.*;
 import org.junit.jupiter.api.Test;
 

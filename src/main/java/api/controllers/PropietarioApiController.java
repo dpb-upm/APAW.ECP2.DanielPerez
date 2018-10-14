@@ -3,11 +3,10 @@ package api.controllers;
 import api.businesscontroller.PropietarioBusinessController;
 import api.dtos.PropietarioDto;
 import api.entities.Propietario;
-import api.exceptions.ArgumentNotValidException;
 
 import java.util.Optional;
 
-public class PropietarioApiController {
+public class PropietarioApiController extends ApiController  {
 
     public static final String ADD_PROPIETARIO_SERVIDOR = "/propietario";
     public static final String GET_PROPIETARIO_SERVIDOR = "/propietario/{id}";
@@ -36,11 +35,5 @@ public class PropietarioApiController {
         validate(id, "id update propietarioApi");
         validate(newId, "newId propietarioApi");
         this.propietarioBusinessController.update(id, newId);
-    }
-
-    private void validate(Object property, String message) {
-        if (property == null) {
-            throw new ArgumentNotValidException(message + " is missing");
-        }
     }
 }

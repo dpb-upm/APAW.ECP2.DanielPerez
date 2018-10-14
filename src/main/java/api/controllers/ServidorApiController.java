@@ -3,9 +3,8 @@ package api.controllers;
 import api.businesscontroller.ServidorBusinessController;
 import api.dtos.ServidorDto;
 import api.entities.TipoServidor;
-import api.exceptions.ArgumentNotValidException;
 
-public class ServidorApiController {
+public class ServidorApiController extends ApiController  {
 
     public static final String ADD_SERVIDOR = "/servidor";
     public static final String ID_ID = "/{id}";
@@ -23,11 +22,5 @@ public class ServidorApiController {
         validate(id, "id ServidorApi");
         validate(tipo, "tipo ServidorApi");
         this.servidorBusinessController.updateTipoServidor(id, tipo);
-    }
-
-    private void validate(Object property, String message) {
-        if (property == null) {
-            throw new ArgumentNotValidException(message + " is missing");
-        }
     }
 }

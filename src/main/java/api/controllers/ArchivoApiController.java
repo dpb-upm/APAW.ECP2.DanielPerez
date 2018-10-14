@@ -7,7 +7,7 @@ import api.exceptions.ArgumentNotValidException;
 
 import java.util.List;
 
-public class ArchivoApiController {
+public class ArchivoApiController extends ApiController {
 
     public static final String ARCHIVO = "/archivo";
     public static final String BUSCAR_POR_TAMANIO = "/buscar";
@@ -30,11 +30,5 @@ public class ArchivoApiController {
 
     public List<Archivo> readAll() {
         return this.archivoBusinessController.readAll();
-    }
-
-    private void validate(Object property, String message) {
-        if (property == null) {
-            throw new ArgumentNotValidException(message + " is missing");
-        }
     }
 }
