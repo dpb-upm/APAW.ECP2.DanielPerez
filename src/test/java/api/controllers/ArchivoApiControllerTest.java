@@ -110,4 +110,18 @@ public class ArchivoApiControllerTest {
         HttpException exception = assertThrows(HttpException.class, () -> new Client().submit(request));
         assertEquals(exception.getHttpStatus(), HttpStatus.BAD_REQUEST);
     }
+
+    @Test
+    void testAverageArchivosWrongParam(){
+        HttpResponse httpResponse = this.createHttpResponseArchivo();
+        assertEquals(httpResponse.getStatus(), HttpStatus.OK);
+        assertNotNull(httpResponse.getBody());
+
+        HttpRequest request = HttpRequest.builder(ArchivoApiController.ARCHIVO)
+                .path(ArchivoApiController.BUSCAR_POR_TAMANIO)
+                .param("q", "average_error:>=" + this.average)
+                .get();
+        HttpException exception = assertThrows(HttpException.class, () -> new Client().submit(request));
+        assertEquals(exception.getHttpStatus(), HttpStatus.BAD_REQUEST);
+    }
 }
