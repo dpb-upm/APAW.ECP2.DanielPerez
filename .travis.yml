@@ -9,10 +9,6 @@ notifications:
   email:
     recipients:
     - daniel.perez.bernal@alumnos.upm.es
-services:
-- mysql
-before_install:
-- mysql -e 'CREATE DATABASE IF NOT EXISTS forge;'
 script:
 - mvn verify
 - mvn org.jacoco:jacoco-maven-plugin:prepare-agent verify
