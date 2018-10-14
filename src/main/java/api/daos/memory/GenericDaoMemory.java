@@ -19,7 +19,7 @@ public abstract class GenericDaoMemory<T> implements GenericDao<T, String> {
     @Override
     public void save(T entity) {
         String idEntity = this.getIdT(entity);
-        if (idEntity.isEmpty() || idEntity == null) {
+        if (idEntity == null || idEntity.isEmpty()) {
             idEntity = String.valueOf(this.id);
             this.setIdT(entity, idEntity);
         }
