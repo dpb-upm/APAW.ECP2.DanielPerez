@@ -3,15 +3,15 @@ package api.daos;
 import java.util.List;
 import java.util.Optional;
 
-public interface GenericDao<T, t> {
+public interface GenericDao<T, String> {
 
     void save(T entity);
 
-    T getEntity(t id);
+    T getEntity(String id);
 
-    Optional<T> read(t id);
+    Optional<T> read(String id);
 
-    void deleteById(t id);
+    void deleteById(String id);
 
     List<T> findAll();
 
