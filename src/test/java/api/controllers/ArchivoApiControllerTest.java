@@ -46,6 +46,18 @@ public class ArchivoApiControllerTest {
         HttpResponse httpResponse2 = new Client().submit(request);
         List<Archivo> archivos = (List<Archivo>) httpResponse2.getBody();
         assertTrue(archivos.size() >= 5);
+    }
 
+    @Test
+    void crearMultiArchivoBadRequest() {
+        for (int i = 0; i < 5; i++){
+            HttpResponse httpResponse = this.createHttpResponseArchivo();
+            assertEquals(httpResponse.getStatus(), HttpStatus.OK);
+            assertNotNull(httpResponse.getBody());
+        }
+
+        HttpRequest request = HttpRequest.builder(ArchivoApiController.ARCHIVO).path("/id").get();
+        HttpException exception = assertThrows(HttpException.class, () -> new Client().submit(request));
+        assertEquals(exception.getHttpStatus(), HttpStatus.BAD_REQUEST);
     }
 }
