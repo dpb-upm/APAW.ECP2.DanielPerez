@@ -32,7 +32,7 @@ public class Propietario {
         this.id = id;
     }
 
-    public Propietario(){
+    public Propietario(String nombre, int edad, LocalDateTime nacimiento){
         this.id = "";
         this.nombre = "";
         this.edad = 0;

@@ -1,7 +1,6 @@
 package api.businessController;
 
 import api.daos.DaoFactory;
-import api.dtos.PropietarioDto;
 import api.dtos.ServidorDto;
 import api.entities.Servidor;
 

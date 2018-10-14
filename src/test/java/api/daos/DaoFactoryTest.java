@@ -1,6 +1,6 @@
 package api.daos;
 
-import api.daos.memory.*;
+import api.daos.memory.DaoFactoryMemory;
 import api.entities.Archivo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
