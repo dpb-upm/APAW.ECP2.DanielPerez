@@ -18,4 +18,8 @@ public class PropietarioBusinessController {
     public Optional<Servidor> read(String id) {
         return DaoFactory.getFactory().getServidorDAO().read(id);
     }
+
+    public void update(String idEntity, String newId) {
+        DaoFactory.getFactory().getPropietarioDAO().update(idEntity, newId);
+    }
 }

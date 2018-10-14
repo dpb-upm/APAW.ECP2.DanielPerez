@@ -57,6 +57,12 @@ public abstract class GenericDaoMemory<T> implements GenericDao<T, String> {
         return list;
     }
 
+    @Override
+    public void update(String idEntity, String id){
+        T entity = this.getEntity(idEntity);
+        this.setIdT(entity, id);
+    }
+
     public abstract String getIdT(T entity);
 
     public abstract void setIdT(T entity, String id);

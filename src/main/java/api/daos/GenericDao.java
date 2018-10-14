@@ -7,6 +7,8 @@ public interface GenericDao<T, String> {
 
     void save(T entity);
 
+    void update(String idEntity, String s);
+
     T getEntity(String id);
 
     Optional<T> read(String id);
