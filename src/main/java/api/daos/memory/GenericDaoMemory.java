@@ -19,7 +19,7 @@ public abstract class GenericDaoMemory<T> implements GenericDao<T, String> {
     @Override
     public void save(T entity) {
         String idEntity = this.getIdT(entity);
-        if (idEntity == null) {
+        if (idEntity.isEmpty() || idEntity == null) {
             idEntity = String.valueOf(this.id);
             this.setIdT(entity, idEntity);
         }
@@ -55,6 +55,14 @@ public abstract class GenericDaoMemory<T> implements GenericDao<T, String> {
         ArrayList<T> list = new ArrayList<>(map.values());
         LogManager.getLogger(this.getClass()).debug("   findAll: " + list);
         return list;
+    }
+
+    @Override
+    public void update(String idEntity, String newId){
+        T entity = this.getEntity(idEntity);
+        this.setIdT(entity, newId);
+        this.map.put(newId, map.get(idEntity));
+        this.map.remove(idEntity);
     }
 
     public abstract String getIdT(T entity);

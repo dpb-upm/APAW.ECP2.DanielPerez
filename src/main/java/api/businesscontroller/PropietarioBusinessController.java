@@ -3,7 +3,6 @@ package api.businesscontroller;
 import api.daos.DaoFactory;
 import api.dtos.PropietarioDto;
 import api.entities.Propietario;
-import api.entities.Servidor;
 
 import java.util.Optional;
 
@@ -15,7 +14,11 @@ public class PropietarioBusinessController {
         return propietario.getId();
     }
 
-    public Optional<Servidor> read(String id) {
-        return DaoFactory.getFactory().getServidorDAO().read(id);
+    public Optional<Propietario> read(String id) {
+        return DaoFactory.getFactory().getPropietarioDAO().read(id);
+    }
+
+    public void update(String idEntity, String newId) {
+        DaoFactory.getFactory().getPropietarioDAO().update(idEntity, newId);
     }
 }

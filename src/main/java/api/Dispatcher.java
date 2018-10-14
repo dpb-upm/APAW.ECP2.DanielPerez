@@ -37,6 +37,7 @@ public class Dispatcher {
                     this.doGet(request, response);
                     break;
                 case PUT:
+                    this.doPut(request);
                     break;
                 case PATCH:
                     break;
@@ -73,6 +74,14 @@ public class Dispatcher {
             response.setBody(propietarioApiController.create((PropietarioDto) request.getBody()));
         } else {
             throw new RequestInvalidException(METHOD_ERROR + request.getMethod() + ' ' + request.getPath());
+        }
+    }
+
+    private void doPut(HttpRequest request) {
+        if (request.isEqualsPath(PropietarioApiController.PUT_PROPIETARIO_SERVIDOR)) {
+            this.propietarioApiController.update(request.getPath(1), (String) request.getBody());
+        } else {
+            throw new RequestInvalidException("request error: " + request.getMethod() + ' ' + request.getPath());
         }
     }
 }
