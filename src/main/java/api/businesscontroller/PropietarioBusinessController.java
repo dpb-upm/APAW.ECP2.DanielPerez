@@ -14,6 +14,10 @@ public class PropietarioBusinessController {
         return propietario.getId();
     }
 
+    public void delete(String id){
+        DaoFactory.getFactory().getPropietarioDAO().deleteById(id);
+    }
+
     public Optional<Propietario> read(String id) {
         return DaoFactory.getFactory().getPropietarioDAO().read(id);
     }

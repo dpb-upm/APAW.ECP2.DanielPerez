@@ -21,6 +21,11 @@ public class PropietarioApiController {
         return this.propietarioBusinessController.create(propietarioDto);
     }
 
+    public void delete(String id){
+        validate(id, "id propietarioApi");
+        this.propietarioBusinessController.delete(id);
+    }
+
     public Optional<Propietario> read(String id){
         validate(id, "id propietarioApi");
         return this.propietarioBusinessController.read(id);
