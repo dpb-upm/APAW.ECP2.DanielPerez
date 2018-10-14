@@ -15,21 +15,21 @@ public class ServidorApiControllerTest {
     }
 
     @Test
-    void crearServidorOK() {
+    void testCreateServidorOK() {
         HttpResponse httpResponse = this.createHttpResponseServidor();
         assertEquals(httpResponse.getStatus(), HttpStatus.OK);
         assertNotNull(httpResponse.getBody());
     }
 
     @Test
-    void crearServidorBadRequest() {
+    void testCreateServidorBadRequest() {
         HttpRequest request = HttpRequest.builder(ServidorApiController.ADD_SERVIDOR).path("/q").body(1).post();
         HttpException exception = assertThrows(HttpException.class, () -> new Client().submit(request));
         assertEquals(exception.getHttpStatus(), HttpStatus.BAD_REQUEST);
     }
 
     @Test
-    void patchServidorOK(){
+    void testPatchServidorOK(){
         HttpResponse httpResponse = this.createHttpResponseServidor();
         assertEquals(httpResponse.getStatus(), HttpStatus.OK);
         assertNotNull(httpResponse.getBody());
@@ -49,7 +49,7 @@ public class ServidorApiControllerTest {
     }
 
     @Test
-    void patchServidorBadRequest(){
+    void testPatchServidorBadRequest(){
         HttpResponse httpResponse = this.createHttpResponseServidor();
         assertEquals(httpResponse.getStatus(), HttpStatus.OK);
         assertNotNull(httpResponse.getBody());

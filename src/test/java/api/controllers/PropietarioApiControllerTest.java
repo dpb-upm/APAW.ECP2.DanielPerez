@@ -17,14 +17,14 @@ public class PropietarioApiControllerTest {
     }
 
     @Test
-    void crearPropietarioOK() {
+    void testCreatePropietarioOK() {
         HttpResponse httpResponse = this.createHttpResponsePropietario();
         assertEquals(httpResponse.getStatus(), HttpStatus.OK);
         assertNotNull(httpResponse.getBody());
     }
 
     @Test
-    void crearPropietarioBadRequest() {
+    void testCreatePropietarioBadRequest() {
         HttpRequest request = HttpRequest.builder(PropietarioApiController.ADD_PROPIETARIO_SERVIDOR)
                 .path("/q")
                 .body(1)
@@ -34,7 +34,7 @@ public class PropietarioApiControllerTest {
     }
 
     @Test
-    void obtenerPropietarioOK(){
+    void testGetPropietarioOK(){
         HttpResponse httpResponse = this.createHttpResponsePropietario();
         assertEquals(httpResponse.getStatus(), HttpStatus.OK);
         assertNotNull(httpResponse.getBody());
@@ -49,7 +49,7 @@ public class PropietarioApiControllerTest {
     }
 
     @Test
-    void obtenerPropietarioBadRequest(){
+    void testGetPropietarioBadRequest(){
         HttpResponse httpResponse = this.createHttpResponsePropietario();
         assertEquals(httpResponse.getStatus(), HttpStatus.OK);
         assertNotNull(httpResponse.getBody());
@@ -64,7 +64,7 @@ public class PropietarioApiControllerTest {
     }
 
     @Test
-    void putPropietarioOK(){
+    void testPutPropietarioOK(){
         HttpResponse httpResponse = this.createHttpResponsePropietario();
         assertEquals(httpResponse.getStatus(), HttpStatus.OK);
         assertNotNull(httpResponse.getBody());
@@ -82,7 +82,7 @@ public class PropietarioApiControllerTest {
     }
 
     @Test
-    void putPropietarioBadRequest(){
+    void testPutPropietarioBadRequest(){
         HttpResponse httpResponse = this.createHttpResponsePropietario();
         assertEquals(httpResponse.getStatus(), HttpStatus.OK);
         assertNotNull(httpResponse.getBody());
@@ -99,7 +99,7 @@ public class PropietarioApiControllerTest {
     }
 
     @Test
-    void deletePropietarioOK(){
+    void testDeletePropietarioOK(){
         HttpResponse httpResponse = this.createHttpResponsePropietario();
         assertEquals(httpResponse.getStatus(), HttpStatus.OK);
         assertNotNull(httpResponse.getBody());
@@ -116,7 +116,7 @@ public class PropietarioApiControllerTest {
     }
 
     @Test
-    void deletePropietarioBadRequest(){
+    void testDeletePropietarioBadRequest(){
         HttpResponse httpResponse = this.createHttpResponsePropietario();
         assertEquals(httpResponse.getStatus(), HttpStatus.OK);
         assertNotNull(httpResponse.getBody());

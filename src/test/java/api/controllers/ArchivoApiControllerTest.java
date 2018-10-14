@@ -25,21 +25,21 @@ public class ArchivoApiControllerTest {
     }
 
     @Test
-    void crearArchivoOK() {
+    void testCrearArchivoOK() {
         HttpResponse httpResponse = this.createHttpResponseArchivo();
         assertEquals(httpResponse.getStatus(), HttpStatus.OK);
         assertNotNull(httpResponse.getBody());
     }
 
     @Test
-    void crearArchivoBadRequest() {
+    void testCrearArchivoBadRequest() {
         HttpRequest request = HttpRequest.builder(ArchivoApiController.ARCHIVO).path("/q").body(1).post();
         HttpException exception = assertThrows(HttpException.class, () -> new Client().submit(request));
         assertEquals(exception.getHttpStatus(), HttpStatus.BAD_REQUEST);
     }
 
     @Test
-    void crearMultiArchivoOK() {
+    void testCrearMultiArchivoOK() {
         for (int i = 0; i < 5; i++){
             HttpResponse httpResponse = this.createHttpResponseArchivo();
             assertEquals(httpResponse.getStatus(), HttpStatus.OK);
@@ -53,7 +53,7 @@ public class ArchivoApiControllerTest {
     }
 
     @Test
-    void crearMultiArchivoBadRequest() {
+    void testCrearMultiArchivoBadRequest() {
         for (int i = 0; i < 5; i++){
             HttpResponse httpResponse = this.createHttpResponseArchivo();
             assertEquals(httpResponse.getStatus(), HttpStatus.OK);
