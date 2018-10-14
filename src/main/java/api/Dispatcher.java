@@ -19,7 +19,7 @@ public class Dispatcher {
     private final ServidorApiController servidorApiController = new ServidorApiController();
     private final PropietarioApiController propietarioApiController = new PropietarioApiController();
 
-    private final String METHOD_ERROR = "method error: ";
+    private static final String METHODERROR = "method error: ";
 
     static {
         DaoFactory.setFactory(new DaoFactoryMemory());
@@ -44,7 +44,7 @@ public class Dispatcher {
                 case DELETE:
                     break;
                 default: // Unexpected
-                    throw new RequestInvalidException(METHOD_ERROR + request.getMethod());
+                    throw new RequestInvalidException(METHODERROR + request.getMethod());
             }
         } catch (ArgumentNotValidException | RequestInvalidException exception) {
             response.setBody(String.format(errorMessage, exception.getMessage()));
@@ -63,7 +63,7 @@ public class Dispatcher {
         if (request.isEqualsPath(PropietarioApiController.GET_PROPIETARIO_SERVIDOR)) {
             response.setBody(this.propietarioApiController.read((String) request.getBody()));
         } else {
-            throw new RequestInvalidException(METHOD_ERROR + request.getMethod() + ' ' + request.getPath());
+            throw new RequestInvalidException(METHODERROR + request.getMethod() + ' ' + request.getPath());
         }
     }
 
@@ -73,7 +73,7 @@ public class Dispatcher {
         } else if(request.isEqualsPath(PropietarioApiController.ADD_PROPIETARIO_SERVIDOR)){
             response.setBody(propietarioApiController.create((PropietarioDto) request.getBody()));
         } else {
-            throw new RequestInvalidException(METHOD_ERROR + request.getMethod() + ' ' + request.getPath());
+            throw new RequestInvalidException(METHODERROR + request.getMethod() + ' ' + request.getPath());
         }
     }
 
