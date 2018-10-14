@@ -1,21 +1,18 @@
 package api.entities;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ArchivoTest {
 
     private Archivo archivo;
 
-    @BeforeEach
-    void before() {
-        this.archivo = new Archivo("1", 100, "Documento de prueba");
-    }
-
     @Test
     void testConstructor() {
+        this.archivo = new Archivo("1", 100, "Documento de prueba");
         assertEquals("1", this.archivo.getId());
         assertEquals("Documento de prueba", this.archivo.getDescripcion());
         assertEquals(100, this.archivo.getTamanio());
@@ -25,5 +22,13 @@ public class ArchivoTest {
 
         this.archivo.setTamanio(150);
         assertEquals(150, this.archivo.getTamanio());
+    }
+
+    @Test
+    void testConstructorId() {
+        this.archivo = new Archivo("1");
+        assertEquals("1", this.archivo.getId());
+        assertNull(this.archivo.getDescripcion());
+        assertTrue(this.archivo.getTamanio() == 0);
     }
 }
