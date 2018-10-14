@@ -26,6 +26,14 @@ public class Propietario {
         this.strategy.setStrategy(strategyPropietario);
     }
 
+    public Propietario(){
+        this.strategy = new StrategyPropietario();
+        this.strategy.setStrategy(new StrategyPropietarioDefault());
+        this.id = "";
+        this.nombre = "";
+        this.edad = 0;
+    }
+
     public Propietario(String id) {
         this.strategy = new StrategyPropietario();
         this.strategy.setStrategy(new StrategyPropietarioDefault());
