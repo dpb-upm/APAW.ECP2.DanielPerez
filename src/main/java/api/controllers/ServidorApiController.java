@@ -1,12 +1,13 @@
 package api.controllers;
 
 import api.businessController.ServidorBusinessController;
+import api.dtos.PropietarioDto;
 import api.dtos.ServidorDto;
 import api.exceptions.ArgumentNotValidException;
 
 public class ServidorApiController {
 
-    public static final String ADD_SERVIDOR = "/servidor/create";
+    public static final String ADD_SERVIDOR = "/servidor";
 
     private final ServidorBusinessController servidorBusinessController = new ServidorBusinessController();
 
