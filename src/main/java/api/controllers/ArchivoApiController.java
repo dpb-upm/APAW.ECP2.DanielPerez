@@ -14,7 +14,7 @@ public class ArchivoApiController {
 
     private ArchivoBusinessController archivoBusinessController = new ArchivoBusinessController();
 
-    public float findGreaterThan(String query) {
+    public int findGreaterThan(String query) {
         validate(query, "query param q");
         if (!"average".equals(query.split(":>=")[0])) {
             throw new ArgumentNotValidException("query param q is incorrect, missing 'average:>='");

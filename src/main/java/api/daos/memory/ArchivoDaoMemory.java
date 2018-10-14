@@ -3,8 +3,6 @@ package api.daos.memory;
 import api.daos.ArchivoDao;
 import api.entities.Archivo;
 
-import java.util.List;
-
 public class ArchivoDaoMemory extends GenericDaoMemory<Archivo> implements ArchivoDao {
 
     @Override

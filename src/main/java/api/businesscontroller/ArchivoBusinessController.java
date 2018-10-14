@@ -14,7 +14,7 @@ public class ArchivoBusinessController {
         return archivo.getId();
     }
 
-    public float findGreaterThan(Double value) {
+    public int findGreaterThan(Double value) {
         return DaoFactory.getFactory().getArchivoDAO().findGreaterThan(value);
     }
 
