@@ -2,7 +2,6 @@ package api.controllers;
 
 import api.dtos.ArchivoDto;
 import api.entities.Archivo;
-import api.entities.Servidor;
 import http.*;
 import org.junit.jupiter.api.Test;
 
@@ -67,7 +66,7 @@ public class ArchivoApiControllerTest {
     }
 
     @Test
-    void testAverageArchivos(){
+    void testAverageArchivosOK(){
         for (int i = 0; i < 5; i++){
             HttpResponse httpResponse = this.createHttpResponseArchivo();
             assertEquals(httpResponse.getStatus(), HttpStatus.OK);
@@ -82,5 +81,33 @@ public class ArchivoApiControllerTest {
         assertEquals(httpResponse2.getStatus(), HttpStatus.OK);
         assertNotNull(httpResponse2.getBody());
         assertEquals(this.total, httpResponse2.getBody());
+    }
+
+    @Test
+    void testAverageArchivosBadRequest(){
+        HttpResponse httpResponse = this.createHttpResponseArchivo();
+        assertEquals(httpResponse.getStatus(), HttpStatus.OK);
+        assertNotNull(httpResponse.getBody());
+
+        HttpRequest request = HttpRequest.builder(ArchivoApiController.ARCHIVO)
+                .path(ArchivoApiController.BUSCAR_POR_TAMANIO)
+                .param("qq", "average:>=" + this.average)
+                .get();
+        HttpException exception = assertThrows(HttpException.class, () -> new Client().submit(request));
+        assertEquals(exception.getHttpStatus(), HttpStatus.BAD_REQUEST);
+    }
+
+    @Test
+    void testAverageArchivosEmptyParam(){
+        HttpResponse httpResponse = this.createHttpResponseArchivo();
+        assertEquals(httpResponse.getStatus(), HttpStatus.OK);
+        assertNotNull(httpResponse.getBody());
+
+        HttpRequest request = HttpRequest.builder(ArchivoApiController.ARCHIVO)
+                .path(ArchivoApiController.BUSCAR_POR_TAMANIO)
+                .param("", "average:>=" + this.average)
+                .get();
+        HttpException exception = assertThrows(HttpException.class, () -> new Client().submit(request));
+        assertEquals(exception.getHttpStatus(), HttpStatus.BAD_REQUEST);
     }
 }
