@@ -23,17 +23,17 @@ public class PropietarioApiController {
     }
 
     public void delete(String id){
-        validate(id, "id propietarioApi");
+        validate(id, "id delete propietarioApi");
         this.propietarioBusinessController.delete(id);
     }
 
     public Optional<Propietario> read(String id){
-        validate(id, "id propietarioApi");
+        validate(id, "id read propietarioApi");
         return this.propietarioBusinessController.read(id);
     }
 
     public void update(String id, String newId){
-        validate(id, "id propietarioApi");
+        validate(id, "id update propietarioApi");
         validate(newId, "newId propietarioApi");
         this.propietarioBusinessController.update(id, newId);
     }
