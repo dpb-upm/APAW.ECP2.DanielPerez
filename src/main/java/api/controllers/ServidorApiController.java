@@ -8,6 +8,9 @@ import api.exceptions.ArgumentNotValidException;
 public class ServidorApiController {
 
     public static final String ADD_SERVIDOR = "/servidor";
+    public static final String ID_ID = "/{id}";
+    public static final String TIPO_SERVIDOR = "/tipo";
+    public static final String PATCH_SERVIDOR = ADD_SERVIDOR + ID_ID + TIPO_SERVIDOR;
 
     private final ServidorBusinessController servidorBusinessController = new ServidorBusinessController();
 
