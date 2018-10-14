@@ -6,7 +6,7 @@ import api.exceptions.ArgumentNotValidException;
 
 public class ArchivoApiController {
 
-    private static final String ARCHIVO = "/archivo";
+    public static final String ARCHIVO = "/archivo";
 
     private ArchivoBusinessController archivoBusinessController = new ArchivoBusinessController();
 

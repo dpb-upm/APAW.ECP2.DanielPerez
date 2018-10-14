@@ -1,9 +1,11 @@
 package api;
 
+import api.controllers.ArchivoApiController;
 import api.controllers.PropietarioApiController;
 import api.controllers.ServidorApiController;
 import api.daos.DaoFactory;
 import api.daos.memory.DaoFactoryMemory;
+import api.dtos.ArchivoDto;
 import api.dtos.PropietarioDto;
 import api.dtos.ServidorDto;
 import api.entities.TipoServidor;
@@ -17,6 +19,7 @@ import org.apache.logging.log4j.LogManager;
 
 public class Dispatcher {
 
+    private final ArchivoApiController archivoApiController = new ArchivoApiController();
     private final ServidorApiController servidorApiController = new ServidorApiController();
     private final PropietarioApiController propietarioApiController = new PropietarioApiController();
 
@@ -88,7 +91,9 @@ public class Dispatcher {
     }
 
     private void doPost(HttpRequest request, HttpResponse response) {
-        if(request.isEqualsPath(ServidorApiController.ADD_SERVIDOR)) {
+        if (request.isEqualsPath(ArchivoApiController.ARCHIVO)){
+            response.setBody(archivoApiController.create((ArchivoDto) request.getBody()));
+        } else if(request.isEqualsPath(ServidorApiController.ADD_SERVIDOR)) {
             response.setBody(servidorApiController.create((ServidorDto) request.getBody()));
         } else if(request.isEqualsPath(PropietarioApiController.ADD_PROPIETARIO_SERVIDOR)){
             response.setBody(propietarioApiController.create((PropietarioDto) request.getBody()));
