@@ -14,4 +14,9 @@ public class ArchivoDaoMemory extends GenericDaoMemory<Archivo> implements Archi
     public void setIdT(Archivo archivo, String id) {
         archivo.setId(id);
     }
+
+    @Override
+    public int findGreaterThan(Double value) {
+        return (int) this.findAll().stream().filter(a -> a.getTamanio() >= value).count();
+    }
 }

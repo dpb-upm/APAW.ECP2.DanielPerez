@@ -75,7 +75,9 @@ public class Dispatcher {
     }
 
     private void doGet(HttpRequest request, HttpResponse response) {
-        if (request.isEqualsPath(ArchivoApiController.ARCHIVO)){
+        if(request.isEqualsPath(ArchivoApiController.ARCHIVO + ArchivoApiController.BUSCAR_POR_TAMANIO)){
+            response.setBody(this.archivoApiController.findGreaterThan(request.getParams().get("q")));
+        } else if (request.isEqualsPath(ArchivoApiController.ARCHIVO)){
             response.setBody(this.archivoApiController.readAll());
         } else if (request.isEqualsPath(PropietarioApiController.GET_PROPIETARIO_SERVIDOR)) {
             response.setBody(this.propietarioApiController.read((String) request.getBody()));

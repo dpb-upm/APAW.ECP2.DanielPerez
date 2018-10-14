@@ -14,6 +14,10 @@ public class ArchivoBusinessController {
         return archivo.getId();
     }
 
+    public int findGreaterThan(Double value) {
+        return DaoFactory.getFactory().getArchivoDAO().findGreaterThan(value);
+    }
+
     public List<Archivo> readAll() {
         return DaoFactory.getFactory().getArchivoDAO().findAll();
     }
