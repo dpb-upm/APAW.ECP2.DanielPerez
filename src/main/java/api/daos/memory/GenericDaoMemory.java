@@ -47,7 +47,7 @@ public abstract class GenericDaoMemory<T> implements GenericDao<T, String> {
     @Override
     public void deleteById(String id) {
         map.remove(id);
-        LogManager.getLogger(this.getClass()).debug("   deleteById(" + id + "): " + map.remove(id));
+        LogManager.getLogger(this.getClass()).debug("   deleteById(" + id + "): ¿Existe id?" + map.containsKey(id));
     }
 
     @Override

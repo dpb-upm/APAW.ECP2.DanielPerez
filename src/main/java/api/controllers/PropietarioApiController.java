@@ -13,12 +13,18 @@ public class PropietarioApiController {
     public static final String GET_PROPIETARIO_SERVIDOR = "/propietario/{id}";
     public static final String ID_ID = "/{id}";
     public static final String PUT_PROPIETARIO_SERVIDOR = ADD_PROPIETARIO_SERVIDOR + ID_ID;
+    public static final String DELETE_PROPIETARIO_SERVIDOR = ADD_PROPIETARIO_SERVIDOR + ID_ID;
 
     private PropietarioBusinessController propietarioBusinessController = new PropietarioBusinessController();
 
     public String create(PropietarioDto propietarioDto){
         validate(propietarioDto.getNombre(), "propietarioDto nombre");
         return this.propietarioBusinessController.create(propietarioDto);
+    }
+
+    public void delete(String id){
+        validate(id, "id propietarioApi");
+        this.propietarioBusinessController.delete(id);
     }
 
     public Optional<Propietario> read(String id){
