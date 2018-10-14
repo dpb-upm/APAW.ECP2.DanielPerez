@@ -42,6 +42,7 @@ public class Dispatcher {
                 case PATCH:
                     break;
                 case DELETE:
+                    this.doDelete(request);
                     break;
                 default: // Unexpected
                     throw new RequestInvalidException(METHODERROR + request.getMethod());
@@ -56,6 +57,14 @@ public class Dispatcher {
             LogManager.getLogger(Dispatcher.class).debug(exception.getMessage());
             response.setBody(String.format(errorMessage, exception));
             response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    private void doDelete(HttpRequest request) {
+        if (request.isEqualsPath(PropietarioApiController.DELETE_PROPIETARIO_SERVIDOR)) {
+            this.propietarioApiController.delete(request.getPath(1));
+        } else {
+            throw new RequestInvalidException("request error: " + request.getMethod() + ' ' + request.getPath());
         }
     }
 
