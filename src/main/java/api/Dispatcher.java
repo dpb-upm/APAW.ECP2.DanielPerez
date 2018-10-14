@@ -6,6 +6,7 @@ import api.daos.DaoFactory;
 import api.daos.memory.DaoFactoryMemory;
 import api.dtos.PropietarioDto;
 import api.dtos.ServidorDto;
+import api.entities.TipoServidor;
 import api.exceptions.ArgumentNotValidException;
 import api.exceptions.NotFoundException;
 import api.exceptions.RequestInvalidException;
@@ -40,6 +41,7 @@ public class Dispatcher {
                     this.doPut(request);
                     break;
                 case PATCH:
+                    this.doPatch(request);
                     break;
                 case DELETE:
                     this.doDelete(request);
@@ -73,6 +75,14 @@ public class Dispatcher {
             response.setBody(this.propietarioApiController.read((String) request.getBody()));
         } else {
             throw new RequestInvalidException(METHODERROR + request.getMethod() + ' ' + request.getPath());
+        }
+    }
+
+    private void doPatch(HttpRequest request) {
+        if (request.isEqualsPath(ServidorApiController.PATCH_SERVIDOR)) {
+            this.servidorApiController.updateTipoServidor(request.getPath(1), (TipoServidor) request.getBody());
+        } else {
+            throw new RequestInvalidException("request error: " + request.getMethod() + ' ' + request.getPath());
         }
     }
 
