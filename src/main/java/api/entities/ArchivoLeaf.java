@@ -1,5 +1,7 @@
 package api.entities;
 
+import api.exceptions.IsALeafException;
+
 public class ArchivoLeaf implements ArchivoComponent {
 
     private Archivo archivo;
@@ -11,6 +13,7 @@ public class ArchivoLeaf implements ArchivoComponent {
     @Override
     public void add(ArchivoComponent cc) {
         // Es una hoja y no se implementa
+        throw new IsALeafException("is missing");
     }
 
     @Override
@@ -21,6 +24,7 @@ public class ArchivoLeaf implements ArchivoComponent {
     @Override
     public void remove(ArchivoComponent cc) {
         // Es una hoja y no se implementa
+        throw new IsALeafException("is missing");
     }
 
     @Override
