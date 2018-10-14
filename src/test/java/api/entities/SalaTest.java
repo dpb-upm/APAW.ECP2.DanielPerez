@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class SalaTest {
 
@@ -25,5 +26,8 @@ public class SalaTest {
 
         this.sala.setCapacidad(22);
         assertEquals(22, this.sala.getCapacidad());
+
+        this.sala.setId("2");
+        assertNotEquals("1", this.sala.getId());
     }
 }
