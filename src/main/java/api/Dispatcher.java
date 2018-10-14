@@ -2,11 +2,13 @@ package api;
 
 import api.controllers.ArchivoApiController;
 import api.controllers.PropietarioApiController;
+import api.controllers.SalaApiController;
 import api.controllers.ServidorApiController;
 import api.daos.DaoFactory;
 import api.daos.memory.DaoFactoryMemory;
 import api.dtos.ArchivoDto;
 import api.dtos.PropietarioDto;
+import api.dtos.SalaDto;
 import api.dtos.ServidorDto;
 import api.entities.TipoServidor;
 import api.exceptions.ArgumentNotValidException;
@@ -22,6 +24,7 @@ public class Dispatcher {
     private final ArchivoApiController archivoApiController = new ArchivoApiController();
     private final ServidorApiController servidorApiController = new ServidorApiController();
     private final PropietarioApiController propietarioApiController = new PropietarioApiController();
+    private final SalaApiController salaApiController = new SalaApiController();
 
     private static final String METHODERROR = "method error: ";
     private static final String REQUESTERROR = "request error: ";
@@ -99,15 +102,19 @@ public class Dispatcher {
             response.setBody(archivoApiController.create((ArchivoDto) request.getBody()));
         } else if(request.isEqualsPath(ServidorApiController.ADD_SERVIDOR)) {
             response.setBody(servidorApiController.create((ServidorDto) request.getBody()));
-        } else if(request.isEqualsPath(PropietarioApiController.ADD_PROPIETARIO_SERVIDOR)){
+        } else if(request.isEqualsPath(PropietarioApiController.ADD_PROPIETARIO_SERVIDOR)) {
             response.setBody(propietarioApiController.create((PropietarioDto) request.getBody()));
+        } else if (request.isEqualsPath(SalaApiController.SALA)){
+            response.setBody(salaApiController.create((SalaDto) request.getBody()));
         } else {
             throw new RequestInvalidException(METHODERROR + request.getMethod() + ' ' + request.getPath());
         }
     }
 
     private void doPut(HttpRequest request) {
-        if (request.isEqualsPath(PropietarioApiController.PUT_PROPIETARIO_SERVIDOR)) {
+        if (request.isEqualsPath(SalaApiController.PUT_SALA)) {
+            this.salaApiController.update(request.getPath(1), (String) request.getBody());
+        } else if (request.isEqualsPath(PropietarioApiController.PUT_PROPIETARIO_SERVIDOR)) {
             this.propietarioApiController.update(request.getPath(1), (String) request.getBody());
         } else {
             throw new RequestInvalidException(REQUESTERROR + request.getMethod() + ' ' + request.getPath());

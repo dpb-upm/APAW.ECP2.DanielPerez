@@ -6,10 +6,15 @@ public class Sala {
     private String nombre;
     private int capacidad;
 
+    public Sala(String nombre, int capacidad) {
+        this.setNombre(nombre);
+        this.setCapacidad(capacidad);
+    }
+
     public Sala(String id, String nombre, int capacidad) {
-        this.id = id;
-        this.nombre = nombre;
-        this.capacidad = capacidad;
+        this.setId(id);
+        this.setNombre(nombre);
+        this.setCapacidad(capacidad);
     }
 
     public void setId(String id) {

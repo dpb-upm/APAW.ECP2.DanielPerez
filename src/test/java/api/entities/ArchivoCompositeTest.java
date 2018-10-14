@@ -67,6 +67,6 @@ public class ArchivoCompositeTest {
 
     @Test
     void testLeafRemove(){
-        assertThrows(IsALeafException.class, () -> this.leaf.add(null));
+        assertThrows(IsALeafException.class, () -> this.leaf.remove(null));
     }
 }
