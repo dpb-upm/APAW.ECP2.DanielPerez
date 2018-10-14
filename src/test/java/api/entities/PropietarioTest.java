@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PropietarioTest {
@@ -34,6 +35,9 @@ public class PropietarioTest {
 
         this.propietario.setEdad(35);
         assertEquals(35, this.propietario.getEdad());
+
+        this.propietario.setId("2");
+        assertNotEquals("1", this.propietario.getId());
     }
 
     @Test

@@ -1,6 +1,6 @@
 package api.controllers;
 
-import api.businessController.ServidorBusinessController;
+import api.businesscontroller.ServidorBusinessController;
 import api.dtos.ServidorDto;
 import api.exceptions.ArgumentNotValidException;
 

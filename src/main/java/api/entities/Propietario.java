@@ -38,12 +38,15 @@ public class Propietario {
         this.strategy = new StrategyPropietario();
         this.strategy.setStrategy(new StrategyPropietarioDefault());
         this.id = id;
+        this.nombre = "";
+        this.edad = 0;
     }
 
     public Propietario(String nombre, int edad, LocalDateTime nacimiento){
         this.id = "";
-        this.nombre = "";
-        this.edad = 0;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.nacimiento = nacimiento;
         this.strategy = new StrategyPropietario();
         this.strategy.setStrategy(new StrategyPropietarioDefault());
     }

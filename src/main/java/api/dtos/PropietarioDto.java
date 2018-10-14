@@ -18,12 +18,16 @@ public class PropietarioDto {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public int getEdad() {
         return edad;
+    }
+
+    public void setNacimiento(LocalDateTime nacimiento) {
+        this.nacimiento = nacimiento;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public void setEdad(int edad) {
@@ -32,10 +36,6 @@ public class PropietarioDto {
 
     public LocalDateTime getNacimiento() {
         return nacimiento;
-    }
-
-    public void setNacimiento(LocalDateTime nacimiento) {
-        this.nacimiento = nacimiento;
     }
 
     @Override

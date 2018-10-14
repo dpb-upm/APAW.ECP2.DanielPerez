@@ -1,6 +1,6 @@
 package api.controllers;
 
-import api.businessController.PropietarioBusinessController;
+import api.businesscontroller.PropietarioBusinessController;
 import api.dtos.PropietarioDto;
 import api.exceptions.ArgumentNotValidException;
 
