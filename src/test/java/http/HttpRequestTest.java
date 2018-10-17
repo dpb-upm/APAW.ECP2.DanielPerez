@@ -1,7 +1,5 @@
-package api.http;
+package http;
 
-import http.HttpMethod;
-import http.HttpRequest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,5 +31,23 @@ public class HttpRequestTest {
     void testIsEqualsPathFalseForLength() {
         HttpRequest httpRequest = new HttpRequest("path/3/path", HttpMethod.GET);
         assertFalse(httpRequest.isEqualsPath("path/{id}/path/other"));
+    }
+
+    @Test
+    void testHttpRequestMethodClear(){
+        HttpRequest httpRequest = new HttpRequest("path/3/path", HttpMethod.GET);
+        httpRequest.setMethod(HttpMethod.DELETE);
+        assertEquals(httpRequest.getMethod(), HttpMethod.DELETE);
+        assertNotEquals(httpRequest.getMethod(), HttpMethod.GET);
+        httpRequest.clearQueryParams();
+        assertTrue(httpRequest.getParams().isEmpty());
+        httpRequest.setPath("path/4");
+        assertEquals(httpRequest.getPath(), "path/4");
+        assertNotEquals(httpRequest.getPath(), "path/3/path");
+    }
+
+    @Test
+    void testHttpRequestBuilder(){
+        HttpRequest.Builder httpRequest = HttpRequest.builder("qwe").headerParam("1", "value");
     }
 }

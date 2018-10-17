@@ -25,7 +25,7 @@ public class FactorySingletonServidor extends Observable<Archivo> {
 
     public void addArchivo(Archivo archivo){
         if(this.servidor == null){
-            this.servidor = new Servidor();
+            this.getServidor();
         }
         this.servidor.setArchivo(archivo);
         this.notifyObservers(archivo);

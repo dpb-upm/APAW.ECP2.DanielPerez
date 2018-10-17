@@ -12,6 +12,12 @@ public class Archivo {
         this.id = id;
     }
 
+    public Archivo(float tamanio, String descripcion) {
+        this.id = null;
+        this.tamanio = tamanio;
+        this.descripcion = descripcion;
+    }
+
     public Archivo(String id, float tamanio, String descripcion) {
         this.id = id;
         this.tamanio = tamanio;

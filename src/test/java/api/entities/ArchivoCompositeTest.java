@@ -1,5 +1,6 @@
 package api.entities;
 
+import api.exceptions.IsALeafException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -57,5 +58,15 @@ public class ArchivoCompositeTest {
         assertEquals(1, this.root.total());
         assertEquals(1, this.leaf.total());
         assertEquals(3, this.tree.total());
+    }
+
+    @Test
+    void testLeafAdd(){
+        assertThrows(IsALeafException.class, () -> this.leaf.add(null));
+    }
+
+    @Test
+    void testLeafRemove(){
+        assertThrows(IsALeafException.class, () -> this.leaf.remove(null));
     }
 }
