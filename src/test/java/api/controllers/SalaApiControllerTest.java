@@ -52,4 +52,23 @@ public class SalaApiControllerTest {
         HttpException exception = assertThrows(HttpException.class, () -> new Client().submit(request2));
         assertEquals(exception.getHttpStatus(), HttpStatus.BAD_REQUEST);
     }
+
+
+    @Test
+    void testKeyExists(){
+        HttpResponse httpResponse = this.createHttpResponseSala();
+        assertEquals(httpResponse.getStatus(), HttpStatus.OK);
+        assertNotNull(httpResponse.getBody());
+        String id = (String) httpResponse.getBody();
+        assertNotNull(id);
+
+        HttpRequest request2 = HttpRequest.builder(SalaApiController.SALA)
+                .path(SalaApiController.ID_ID)
+                .expandPath(id)
+                .body("99")
+                .put();
+        HttpResponse httpResponse2 = new Client().submit(request2);
+        assertEquals(httpResponse2.getStatus(), HttpStatus.OK);
+        assertNull(httpResponse2.getBody());
+    }
 }
